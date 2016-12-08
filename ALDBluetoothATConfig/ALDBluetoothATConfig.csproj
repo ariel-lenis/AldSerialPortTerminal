@@ -106,13 +106,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="K:\DotNetModules\SerialPort\ALDSerialPort\ALDSerialPort.csproj">
-      <Project>{5D744B44-3948-4CF8-93C4-A312A2EB61DE}</Project>
-      <Name>ALDSerialPort</Name>
-    </ProjectReference>
+    <Resource Include="ald.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ald.ico" />
+    <ProjectReference Include="..\SerialPort\ALDSerialPort\ALDSerialPort.csproj">
+      <Project>{5d744b44-3948-4cf8-93c4-a312a2eb61de}</Project>
+      <Name>ALDSerialPort</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
