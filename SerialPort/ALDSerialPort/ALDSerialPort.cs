@@ -104,14 +104,18 @@ namespace ALDSerialPort
                 return Port;
             }
         }
+
         public static List<PreviousInformation> EnumeratePorts()
         {
+            string targetCaptionProperty = "Caption";
+
             SerialConfiguration c;
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2","SELECT * FROM Win32_PnPEntity");
-            List<string> Descriptions = new List<string>(); 
+            List<string> Descriptions = new List<string>();
             foreach (ManagementObject queryObj in searcher.Get())
-                if (queryObj["Caption"].ToString().Contains("(COM"))
-                    Descriptions.Add(queryObj["Caption"].ToString());
+                if (queryObj.ContainsProperty(targetCaptionProperty) && queryObj[targetCaptionProperty] != null && queryObj[targetCaptionProperty].ToString().Contains("(COM"))
+                    Descriptions.Add(queryObj[targetCaptionProperty].ToString());
+
             List<PreviousInformation> list = SerialPort.GetPortNames().ToList().ConvertAll(x => new PreviousInformation() { Port = x });
             string information;
             int previdx;
