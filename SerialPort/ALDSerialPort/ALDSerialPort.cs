@@ -198,7 +198,7 @@ namespace ALDSerialPort
         {
             try
             {
-                serial.Write(data);
+                serial.Write(data + "\r\n");
                 return true;
             }
             catch { return false; }

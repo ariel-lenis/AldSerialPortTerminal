@@ -74,7 +74,7 @@ namespace ALDBluetoothATConfig
 
         void serial_ErrorReceived(object sender, System.IO.Ports.SerialErrorReceivedEventArgs e)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)

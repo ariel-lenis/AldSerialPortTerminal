@@ -5,36 +5,37 @@
 	x:Class="ALDBluetoothATConfig.WPFComandosAT"
 	x:Name="Window"
 	Title="ALD Comandos AT HC-06"
-	Width="601" Height="297" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Icon="/ALDBluetoothATConfig;component/ald.ico">
+	Width="601" Height="303" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Icon="/ALDBluetoothATConfig;component/ald.ico">
 
-	<Grid x:Name="LayoutRoot">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="6.008"/>
-			<ColumnDefinition Width="149.659"/>
-			<ColumnDefinition Width="131.32"/>
-			<ColumnDefinition Width="0.964*"/>
-			<ColumnDefinition Width="0.036*"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="9.957"/>
-			<RowDefinition Height="37.125"/>
-			<RowDefinition Height="34.91"/>
-			<RowDefinition Height="43.136"/>
-			<RowDefinition Height="42.943"/>
-			<RowDefinition Height="43.944"/>
-			<RowDefinition Height="49.007"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Button Content="Probar Comunicacion" Margin="2,4,0,2" HorizontalAlignment="Left" Width="273" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="White" FontSize="14.667" Name="btnTryComunication" Click="btnTryComunication_Click" Foreground="Black" />
-		<Button Content="Obtener Version Firmware" Margin="2,2,0,1.975" HorizontalAlignment="Left" Width="273" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="White" FontSize="14.667" Name="btnGetFirmwareVersion" Click="btnGetFirmwareVersion_Click" Foreground="Black" />
-		<ComboBox Margin="2,2.025,2.06,0" Height="39" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Background="White" FontSize="14.667" Name="cbBaudrate" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" />
-		<Button Content="Cambiar Baudrate" Height="39" Margin="1.94,2.025,6.1,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="2" Background="White" FontSize="14.667" Name="btnBaudrateChange" Click="btnBaudrateChange_Click" Foreground="Black" />
-		<TextBox Margin="2,1.925,2.06,0" TextWrapping="Wrap" FontSize="14.667" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1" Background="White" HorizontalContentAlignment="Center" Name="txtName" Foreground="Black" MaxLength="20" />
-		<Button Content="Cambiar Nombre" Height="39" Margin="1.94,1.925,6.1,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="2" Background="White" FontSize="14.667" Name="btnNameChange" Click="btnNameChange_Click" Foreground="Black" />
-		<TextBox Margin="2,2.025,2.06,0" TextWrapping="Wrap" FontSize="14.667" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="1" Background="White" HorizontalContentAlignment="Center" Name="txtPIN" Foreground="Black" MaxLength="4" />
-		<Button Content="Cambiar PIN" Height="39" Margin="1.94,2.025,6.1,0" VerticalAlignment="Top" Grid.Row="5" Grid.Column="2" Background="White" FontSize="14.667" Name="btnPINChange" Click="btnPINChange_Click" Foreground="Black" />
-		<TextBox Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="&lt;Nada recibido&gt;" Grid.RowSpan="6" Background="Black" Foreground="Lime" AcceptsReturn="True" IsReadOnly="True" IsReadOnlyCaretVisible="True" FontFamily="Consolas" Name="txtResults" Margin="0,0,0,6.007" />
-		<ComboBox Margin="0,4,4.06,6.007" Grid.Row="6" Grid.Column="1" Background="White" FontSize="14.667" x:Name="cbParity" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" />
-		<Button Content="Cambiar Paridad" Margin="1.94,4,6.1,6.007" Grid.Row="6" Grid.Column="2" Background="White" FontSize="14.667" x:Name="btnParity"  Foreground="Black" Click="btnParity_Click" />
-	</Grid>
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6.008"/>
+            <ColumnDefinition Width="149.659"/>
+            <ColumnDefinition Width="131.32"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9.957"/>
+            <RowDefinition Height="37.125"/>
+            <RowDefinition Height="34.91"/>
+            <RowDefinition Height="43.136"/>
+            <RowDefinition Height="42.943"/>
+            <RowDefinition Height="43.944"/>
+            <RowDefinition Height="49.007"/>
+            <RowDefinition/>
+            <RowDefinition Height="3.978"/>
+        </Grid.RowDefinitions>
+        <Button Content="Probar Comunicacion" Margin="2,4,5.979,2" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="White" FontSize="14.667" Name="btnTryComunication" Click="btnTryComunication_Click" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <Button Content="Obtener Version Firmware" Margin="2,2,5.979,1.975" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="White" FontSize="14.667" Name="btnGetFirmwareVersion" Click="btnGetFirmwareVersion_Click" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <ComboBox Margin="2,2.025,2.06,2.111" Grid.Row="3" Grid.Column="1" Background="White" FontSize="14.667" Name="cbBaudrate" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <Button Content="Cambiar Baudrate" Margin="1.94,2.025,6.1,2.111" Grid.Row="3" Grid.Column="2" Background="White" FontSize="14.667" Name="btnBaudrateChange" Click="btnBaudrateChange_Click" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <TextBox Margin="2,1.925,2.06,0" TextWrapping="Wrap" FontSize="14.667" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1" Background="White" HorizontalContentAlignment="Center" Name="txtName" Foreground="Black" MaxLength="20" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <Button Content="Cambiar Nombre" Margin="1.94,1.925,6.1,2.018" Grid.Row="4" Grid.Column="2" Background="White" FontSize="14.667" Name="btnNameChange" Click="btnNameChange_Click" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <TextBox Margin="2,2.025,2.06,0" TextWrapping="Wrap" FontSize="14.667" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="1" Background="White" HorizontalContentAlignment="Center" Name="txtPIN" Foreground="Black" MaxLength="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <Button Content="Cambiar PIN" Margin="1.94,2.025,6.1,2.919" Grid.Row="5" Grid.Column="2" Background="White" FontSize="14.667" Name="btnPINChange" Click="btnPINChange_Click" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <TextBox Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="&lt;Nada recibido&gt;" Grid.RowSpan="7" Background="#FF3A3A3A" Foreground="#FF73B9FF" AcceptsReturn="True" IsReadOnly="True" IsReadOnlyCaretVisible="True" FontFamily="Consolas" Name="txtResults" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <ComboBox Margin="0,4,4.06,6.007" Grid.Row="6" Grid.Column="1" Background="White" FontSize="14.667" x:Name="cbParity" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <Button Content="Cambiar Paridad" Margin="1.94,4,6.1,6.018" Grid.Row="6" Grid.Column="2" Background="White" FontSize="14.667" x:Name="btnParity"  Foreground="Black" Click="btnParity_Click" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+    </Grid>
 </Window>
