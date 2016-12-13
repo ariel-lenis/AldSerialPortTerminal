@@ -50,11 +50,6 @@ namespace ALDBluetoothATConfig
             snew = sold = "";
             timer = new Timer(500);
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
-
-            cbParity.Items.Add("None Ninguna");
-            cbParity.Items.Add("Odd Impar");
-            cbParity.Items.Add("Even Par");
-            cbParity.SelectedIndex = 0;
 		}
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -111,7 +106,7 @@ namespace ALDBluetoothATConfig
         {
             this.IsEnabled = false;
             timer.Start();
-            serial.SendData("AT");
+            SendData("AT");
         }
 
         private void btnGetFirmwareVersion_Click(object sender, RoutedEventArgs e)
@@ -119,7 +114,7 @@ namespace ALDBluetoothATConfig
             this.IsEnabled = false;
             timer.Start();
 
-            serial.SendData("AT+VERSION");
+            SendData("AT+VERSION");
             
         }
 
@@ -132,7 +127,7 @@ namespace ALDBluetoothATConfig
             
 
             HC06Baudrate res = (HC06Baudrate)cbBaudrate.SelectedItem;
-            serial.SendData("AT+BAUD"+(int)res);
+            SendData("AT+BAUD"+(int)res);
 
         }
 
@@ -141,7 +136,7 @@ namespace ALDBluetoothATConfig
             this.IsEnabled = false;
             timer.Start();
 
-            serial.SendData("AT+NAME" + txtName.Text);
+            SendData("AT+NAME" + txtName.Text);
         }
 
         private void btnPINChange_Click(object sender, RoutedEventArgs e)
@@ -156,7 +151,7 @@ namespace ALDBluetoothATConfig
             this.IsEnabled = false;
             timer.Start();
 
-            serial.SendData("AT+PIN" + txtPIN.Text);
+            SendData("AT+PIN" + txtPIN.Text);
         }
 
         private void btnParity_Click(object sender, RoutedEventArgs e)
@@ -165,7 +160,29 @@ namespace ALDBluetoothATConfig
             this.IsEnabled = false;
             timer.Start();
 
-            serial.SendData("AT+P" + cbParity.Text[0]);
+            SendData("AT+P" + cbParity.Text[0]);
         }
-	}
+
+        void SendData(string data)
+        {
+            if (this.ckCrLF.IsChecked == true)
+                data += "\r\n";
+
+            serial.SendData(data);
+        }
+
+        private void txtInputConsole_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SendData(txtInputConsole.Text);
+                txtInputConsole.Text = "";
+            }
+        }
+
+        private void txtInputConsole_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+    }
 }

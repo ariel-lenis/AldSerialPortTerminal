@@ -51,7 +51,9 @@ namespace ALDBluetoothATConfig
 
         private void Window_SourceInitialized(object sender, EventArgs e)
         {
-            MyLanguages.Current.CurrentLanguage = "English";
+            this.cbLanguage.ItemsSource = MyLanguages.Current.AllLanguages;
+            this.cbLanguage.Text = "English";
+
             Type type;
             /*
             type= typeof(A.ALDSerialPort.SerialConfiguration.EBitsPerSecond);
@@ -118,6 +120,10 @@ namespace ALDBluetoothATConfig
 
         }
 
-
+        private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.cbLanguage.SelectedIndex != -1)
+                MyLanguages.Current.CurrentLanguage = this.cbLanguage.SelectedItem.ToString() ;
+        }
     }
 }

@@ -3,4 +3,20 @@
                     xmlns:local="clr-namespace:ALDBluetoothATConfig.Internationalization.Resources"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="MainWindowTitle">HC-06 Bluetooth module configurator</system:String>
+    <system:String x:Key="SearchLabel">Search</system:String>
+    <system:String x:Key="StartConfigurationLabel">Start Configuration</system:String>
+    <system:String x:Key="BaudRateLabel">Baud Rate</system:String>
+    <system:String x:Key="DataBitsLabel">Data Bits</system:String>
+    <system:String x:Key="ParityLabel">Parity</system:String>
+    <system:String x:Key="StopBitsLabel">Stop Bits</system:String>
+    <system:String x:Key="ConsoleWindowTitle">RS232 Console</system:String>
+    <system:String x:Key="TestCommunicationLabel">Test communication</system:String>
+    <system:String x:Key="GetFirmwareVersionLabel">Get Firmware Version</system:String>
+    <system:String x:Key="ChangeBaudRateLabel">Change BaudRate</system:String>
+    <system:String x:Key="ChangeNameLabel">Change Name</system:String>
+    <system:String x:Key="ChangePinLabel">Change PIN</system:String>
+    <system:String x:Key="ChangeParityLabel">Change Parity</system:String>
+    <system:String x:Key="ParityNoneLabel">None</system:String>
+    <system:String x:Key="ParityOddLabel">Odd</system:String>
+    <system:String x:Key="ParityEvenLabel">Even</system:String>
 </ResourceDictionary>
