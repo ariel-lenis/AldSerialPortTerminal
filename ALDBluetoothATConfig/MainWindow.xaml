@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" mc:Ignorable="d" x:Class="ALDBluetoothATConfig.MainWindow"
-        Title=".::ALD::. Configuracion Modulo Bluetooth HC-06" Height="324" Width="513" Background="White" ResizeMode="NoResize" SourceInitialized="Window_SourceInitialized" WindowStartupLocation="CenterScreen" Icon="/ALDBluetoothATConfig;component/ald.ico">
+        Title="{DynamicResource MainWindowTitle}" Height="324" Width="513" Background="White" ResizeMode="NoResize" SourceInitialized="Window_SourceInitialized" WindowStartupLocation="CenterScreen" Icon="/ALDBluetoothATConfig;component/ald.ico">
 	<Window.Resources>
 		<Style x:Key="ComboBoxFocusVisual">
 			<Setter Property="Control.Template">

@@ -12,5 +12,6 @@ namespace ALDBluetoothATConfig
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALDBluetoothATConfig.Internationalization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,7 @@ namespace ALDBluetoothATConfig
 
         private void Window_SourceInitialized(object sender, EventArgs e)
         {
+            MyLanguages.Current.CurrentLanguage = "English";
             Type type;
             /*
             type= typeof(A.ALDSerialPort.SerialConfiguration.EBitsPerSecond);

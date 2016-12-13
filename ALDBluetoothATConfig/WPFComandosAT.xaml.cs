@@ -48,7 +48,7 @@ namespace ALDBluetoothATConfig
             sw = new Stopwatch();
             sw.Start();
             snew = sold = "";
-            timer = new Timer(1000);
+            timer = new Timer(500);
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
 
             cbParity.Items.Add("None Ninguna");
@@ -80,7 +80,7 @@ namespace ALDBluetoothATConfig
         void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string res = serial.Serial.ReadExisting();
-            if (sw.ElapsedMilliseconds > 1000)
+            if (sw.ElapsedMilliseconds > 500)
             {
                 if(snew!="") sold = snew + "\n" + sold;
                 snew = "[" + DateTime.Now.TimeOfDay.ToString() + "] " + res;

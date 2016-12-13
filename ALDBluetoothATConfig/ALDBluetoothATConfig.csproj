@@ -61,9 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Internationalization\MyLanguages.cs" />
     <Compile Include="WPFComandosAT.xaml.cs">
       <DependentUpon>WPFComandosAT.xaml</DependentUpon>
     </Compile>
+    <Page Include="Internationalization\Resources\en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Internationalization\Resources\es-ES.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +118,10 @@
     <Resource Include="ald.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ald.Internationalization\Ald.Internationalization.csproj">
+      <Project>{d90db06d-eaaa-429d-96c7-1cddc02e7d19}</Project>
+      <Name>Ald.Internationalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SerialPort\ALDSerialPort\ALDSerialPort.csproj">
       <Project>{5d744b44-3948-4cf8-93c4-a312a2eb61de}</Project>
       <Name>ALDSerialPort</Name>

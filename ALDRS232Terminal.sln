@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALDBluetoothATConfig", "ALD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALDSerialPort", "SerialPort\ALDSerialPort\ALDSerialPort.csproj", "{5D744B44-3948-4CF8-93C4-A312A2EB61DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ald.Internationalization", "Ald.Internationalization\Ald.Internationalization.csproj", "{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,18 @@ Global
 		{5D744B44-3948-4CF8-93C4-A312A2EB61DE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5D744B44-3948-4CF8-93C4-A312A2EB61DE}.Release|x86.ActiveCfg = Release|Any CPU
 		{5D744B44-3948-4CF8-93C4-A312A2EB61DE}.Release|x86.Build.0 = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Debug|x86.Build.0 = Debug|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|x86.ActiveCfg = Release|Any CPU
+		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
