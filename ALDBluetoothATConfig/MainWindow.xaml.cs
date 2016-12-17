@@ -51,24 +51,21 @@ namespace ALDBluetoothATConfig
 
         private void Window_SourceInitialized(object sender, EventArgs e)
         {
+            Type type;
+
             this.cbLanguage.ItemsSource = MyLanguages.Current.AllLanguages;
             this.cbLanguage.Text = "English";
+            
 
-            Type type;
             /*
+            
             type= typeof(A.ALDSerialPort.SerialConfiguration.EBitsPerSecond);
             cbBitsPerSecond.ItemsSource = type.GetEnumValues();
             cbBitsPerSecond.SelectedItem = ALDSerialPort.ALDSerialPort.SerialConfiguration.EBitsPerSecond.V9600;
             */
-            cbBitsPerSecond.Items.Add(1200);
-            cbBitsPerSecond.Items.Add(2400);
-            cbBitsPerSecond.Items.Add(4800);
-            cbBitsPerSecond.Items.Add(9600);
-            cbBitsPerSecond.Items.Add(19200);
-            cbBitsPerSecond.Items.Add(38400);
-            cbBitsPerSecond.Items.Add(57600);
-            cbBitsPerSecond.Items.Add(230400);
-            cbBitsPerSecond.SelectedItem = 9600;
+
+            this.cbBitsPerSecond.ItemsSource = ALDSerialPort.ALDSerialPort.SerialConfiguration.BitsPerSecondArray;
+            cbBitsPerSecond.SelectedValue = 9600;
             
             type = typeof(A.ALDSerialPort.SerialConfiguration.EDataBits);
             cbDataBits.ItemsSource = type.GetEnumValues();
@@ -91,7 +88,7 @@ namespace ALDBluetoothATConfig
             A.ALDSerialPort.PreviousInformation prev = cbCOMPorts.SelectedItem as A.ALDSerialPort.PreviousInformation;
             A.ALDSerialPort.SerialConfiguration sconf = new A.ALDSerialPort.SerialConfiguration();
             A.ALDSerialPort.TotalConfiguration configuration = new A.ALDSerialPort.TotalConfiguration(prev.Port, sconf);
-            configuration.Configuration.ConfigBitsPerSecond = (int)cbBitsPerSecond.SelectedItem;
+            configuration.Configuration.ConfigBitsPerSecond = (int)cbBitsPerSecond.SelectedValue;
             configuration.Configuration.ConfigDataBits = (A.ALDSerialPort.SerialConfiguration.EDataBits)this.cbDataBits.SelectedItem;
             configuration.Configuration.ConfigParity = (System.IO.Ports.Parity)this.cbParity.SelectedItem;
             configuration.Configuration.ConfigStopBits = (System.IO.Ports.StopBits)this.cbStopBits.SelectedItem;
@@ -101,7 +98,10 @@ namespace ALDBluetoothATConfig
             {
                 serial.OpenPort();
                 WPFComandosAT w = new WPFComandosAT(serial);
+
+                this.Hide();
                 w.ShowDialog();
+                this.Show();
             }
             catch
             {

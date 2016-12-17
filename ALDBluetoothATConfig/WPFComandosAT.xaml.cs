@@ -36,6 +36,7 @@ namespace ALDBluetoothATConfig
             v115200bps,
             v230400bps
         }
+
         private ALDSerialPort.ALDSerialPort serial;
 
 		public WPFComandosAT()
@@ -69,7 +70,7 @@ namespace ALDBluetoothATConfig
 
         void serial_ErrorReceived(object sender, System.IO.Ports.SerialErrorReceivedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(e.EventType.ToString());
         }
 
         void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)

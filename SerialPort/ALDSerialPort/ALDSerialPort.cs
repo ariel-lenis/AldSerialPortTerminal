@@ -44,6 +44,15 @@ namespace ALDSerialPort
                 V115200=115200,
                 V128000=128000
             };
+
+            public static int[] BitsPerSecondArray
+            {
+                get
+                {
+                    return Enum.GetValues(typeof(EBitsPerSecond)).Cast<int>().ToArray() ;
+                }
+            }
+
             public enum EDataBits
             {
                 V4 = 4,
@@ -198,7 +207,7 @@ namespace ALDSerialPort
         {
             try
             {
-                serial.Write(data + "\r\n");
+                serial.Write(data);
                 return true;
             }
             catch { return false; }
