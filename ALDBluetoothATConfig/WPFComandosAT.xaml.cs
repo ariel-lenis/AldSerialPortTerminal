@@ -22,8 +22,8 @@ namespace ALDBluetoothATConfig
 	{
         Stopwatch sw;
         Timer timer;
-        string snew;
-        string sold;
+        string strNew;
+        string strOld;
         public enum HC06Baudrate
         {
             v1200bps = 1,
@@ -48,9 +48,11 @@ namespace ALDBluetoothATConfig
             cbBaudrate.SelectedItem = HC06Baudrate.v9600bps;
             sw = new Stopwatch();
             sw.Start();
-            snew = sold = "";
+            strNew = strOld = "";
             timer = new Timer(500);
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+
+            //this.richTxtResults.ContextMenu = 
 		}
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -75,22 +77,25 @@ namespace ALDBluetoothATConfig
 
         void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            string res = serial.Serial.ReadExisting();
-            if (sw.ElapsedMilliseconds > 500)
-            {
-                if(snew!="") sold = snew + "\n" + sold;
-                snew = "[" + DateTime.Now.TimeOfDay.ToString() + "] " + res;
+            System.Threading.Thread.Sleep(100);
+            string strNew = serial.Serial.ReadExisting();
+
+            Debug.WriteLine(strNew);
+
+            //if (sw.ElapsedMilliseconds > 500)
+            //{
+                //if(strNew!="") strOld = strNew + "\n" + strOld;
+                //strNew = "\n[" + DateTime.Now.TimeOfDay.ToString() + "] " + strNew;
+
+                this.Dispatcher.Invoke(new Action(delegate
+                {
+                    this.mcTxt.AppendResponse("\n"  + strNew);
+                }));
+
                 sw.Restart();
-            }
-            else
-                snew += res;
-            this.Dispatcher.Invoke(new Action(delegate
-            {
-                if (snew != "")
-                    txtResults.Text = snew + "\n" + sold;
-                else
-                    txtResults.Text = sold;
-            }));
+            //}
+            //else
+            //    strNew += res;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -170,6 +175,7 @@ namespace ALDBluetoothATConfig
                 data += "\r\n";
 
             serial.SendData(data);
+            sw.Restart();
         }
 
         private void txtInputConsole_KeyDown(object sender, KeyEventArgs e)

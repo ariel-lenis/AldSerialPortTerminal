@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="ALDBluetoothATConfig.UserControls.MyConsole"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ALDBluetoothATConfig.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <RichTextBox x:Name="richTxtConsole" Margin="0,0,-1.013,0" Background="#FF464646" Foreground="#FF80B9FF" IsReadOnlyCaretVisible="True" Block.LineHeight="1" SelectionChanged="richTxtConsole_SelectionChanged" KeyDown="richTxtConsole_KeyDown" PreviewKeyDown="richTxtConsole_PreviewKeyDown" VerticalScrollBarVisibility="Visible">
+            <RichTextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{DynamicResource ClearConsoleLabel}" Click="MenuItemClearConsole_Click" />
+                </ContextMenu>
+            </RichTextBox.ContextMenu>
+            <FlowDocument>
+                <Paragraph LineHeight="1"/>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</UserControl>

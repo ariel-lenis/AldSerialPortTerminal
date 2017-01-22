@@ -19,4 +19,5 @@
     <system:String x:Key="ParityNoneLabel">Ninguna</system:String>
     <system:String x:Key="ParityOddLabel">Impar</system:String>
     <system:String x:Key="ParityEvenLabel">Par</system:String>
+    <system:String x:Key="ClearConsoleLabel">Limpiar Consola</system:String>
 </ResourceDictionary>

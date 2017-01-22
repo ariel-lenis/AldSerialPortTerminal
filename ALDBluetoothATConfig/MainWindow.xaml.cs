@@ -20,33 +20,38 @@ namespace ALDBluetoothATConfig
     /// </summary>
     public partial class MainWindow : Window
     {
+        Configuration.SettingsManager settingsManager;
+
         public MainWindow()
         {
             InitializeComponent();
-            UpdatePorts();        
+            
+            this.settingsManager = new Configuration.SettingsManager(Constants.FileName);
+            this.settingsManager.LoadFromFile();
         }
 
         private void UpdatePorts()
         {
+            string lastUsedPort = this.settingsManager.CurrentSettings.LastUsedPort;
+
             var res = ALDSerialPort.ALDSerialPort.EnumeratePorts();
+            var ports = res.ToDictionary(x => x.Port);
+
             cbCOMPorts.ItemsSource = null;
             cbCOMPorts.ItemsSource = res;
-            if (res.Count > 0) cbCOMPorts.SelectedIndex = 0;
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (lastUsedPort!=null && ports.ContainsKey(lastUsedPort))
+                cbCOMPorts.SelectedItem = ports[lastUsedPort];
+            else
+            {
+                if (res.Count > 0) cbCOMPorts.SelectedIndex = 0;
+            }
+            
         }
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             UpdatePorts();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
@@ -64,36 +69,60 @@ namespace ALDBluetoothATConfig
             cbBitsPerSecond.SelectedItem = ALDSerialPort.ALDSerialPort.SerialConfiguration.EBitsPerSecond.V9600;
             */
 
-            this.cbBitsPerSecond.ItemsSource = ALDSerialPort.ALDSerialPort.SerialConfiguration.BitsPerSecondArray;
-            cbBitsPerSecond.SelectedValue = 9600;
+            this.cbBitsPerSecond.ItemsSource = ALDSerialPort.SerialConfiguration.BitsPerSecondArray;
+            cbBitsPerSecond.SelectedValue = 115200;
             
-            type = typeof(A.ALDSerialPort.SerialConfiguration.EDataBits);
+            type = typeof(A.SerialConfiguration.EDataBits);
             cbDataBits.ItemsSource = type.GetEnumValues();
-            cbDataBits.SelectedItem = ALDSerialPort.ALDSerialPort.SerialConfiguration.EDataBits.V8;
+            cbDataBits.SelectedItem = ALDSerialPort.SerialConfiguration.EDataBits.V8;
             
 
-
-
-            type = typeof(System.IO.Ports.StopBits);           
+            type = typeof(System.IO.Ports.StopBits);
             cbStopBits.ItemsSource = type.GetEnumValues();
             cbStopBits.SelectedItem = System.IO.Ports.StopBits.One;
 
             type = typeof(System.IO.Ports.Parity);
             cbParity.ItemsSource = type.GetEnumValues();
-            cbParity.SelectedItem = System.IO.Ports.Parity.None; 
+            cbParity.SelectedItem = System.IO.Ports.Parity.None;
+
+
+            this.cbProfile.ItemsSource = this.settingsManager.CurrentSettings.Configurations.Keys.ToList();
+
+            if (this.settingsManager.CurrentSettings.Configurations.ContainsKey(this.settingsManager.CurrentSettings.DefaultPortSetting))
+                this.cbProfile.SelectedItem = this.settingsManager.CurrentSettings.DefaultPortSetting;
+
+            this.UpdatePorts();
         }
 
         private void btnStartConfiguration_Click(object sender, RoutedEventArgs e)
         {
-            A.ALDSerialPort.PreviousInformation prev = cbCOMPorts.SelectedItem as A.ALDSerialPort.PreviousInformation;
-            A.ALDSerialPort.SerialConfiguration sconf = new A.ALDSerialPort.SerialConfiguration();
-            A.ALDSerialPort.TotalConfiguration configuration = new A.ALDSerialPort.TotalConfiguration(prev.Port, sconf);
-            configuration.Configuration.ConfigBitsPerSecond = (int)cbBitsPerSecond.SelectedValue;
-            configuration.Configuration.ConfigDataBits = (A.ALDSerialPort.SerialConfiguration.EDataBits)this.cbDataBits.SelectedItem;
-            configuration.Configuration.ConfigParity = (System.IO.Ports.Parity)this.cbParity.SelectedItem;
-            configuration.Configuration.ConfigStopBits = (System.IO.Ports.StopBits)this.cbStopBits.SelectedItem;
+            string profile = this.cbProfile.Text.Trim();
+
+            A.SerialPreviousInformation portInformation = cbCOMPorts.SelectedItem as A.SerialPreviousInformation;
+            A.SerialConfiguration serialConfiguration = new A.SerialConfiguration();
+
+            serialConfiguration.ConfigBitsPerSecond = (int)cbBitsPerSecond.SelectedValue;
+            serialConfiguration.ConfigDataBits = (A.SerialConfiguration.EDataBits)this.cbDataBits.SelectedItem;
+            serialConfiguration.ConfigParity = (System.IO.Ports.Parity)this.cbParity.SelectedItem;
+            serialConfiguration.ConfigStopBits = (System.IO.Ports.StopBits)this.cbStopBits.SelectedItem;
+            
+
+            if (profile.Length > 0)
+            {
+                if (!this.settingsManager.CurrentSettings.Configurations.ContainsKey(profile))
+                    this.settingsManager.CurrentSettings.Configurations.Add(profile, serialConfiguration);
+                else
+                    this.settingsManager.CurrentSettings.Configurations[profile] = serialConfiguration;
+            }
+
+            this.settingsManager.CurrentSettings.LastUsedPort = portInformation.Port;
+            this.settingsManager.CurrentSettings.DefaultPortSetting = profile;
+            this.settingsManager.SaveToFile();
+
+            A.TotalConfiguration configuration = new A.TotalConfiguration(portInformation.Port, serialConfiguration);
 
             A.ALDSerialPort serial = new A.ALDSerialPort(configuration);
+
             try
             {
                 serial.OpenPort();
@@ -124,6 +153,20 @@ namespace ALDBluetoothATConfig
         {
             if (this.cbLanguage.SelectedIndex != -1)
                 MyLanguages.Current.CurrentLanguage = this.cbLanguage.SelectedItem.ToString() ;
+        }
+
+        private void cbProfile_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.cbProfile.SelectedItem == null)
+                return;
+
+            string profile = this.cbProfile.SelectedItem.ToString();
+            var serialConfiguration = this.settingsManager.CurrentSettings.Configurations[profile];
+
+            this.cbBitsPerSecond.SelectedValue = serialConfiguration.ConfigBitsPerSecond;
+            this.cbDataBits.SelectedItem = serialConfiguration.ConfigDataBits;
+            this.cbParity.SelectedItem = serialConfiguration.ConfigParity;
+            this.cbStopBits.SelectedItem = serialConfiguration.ConfigStopBits;
         }
     }
 }
