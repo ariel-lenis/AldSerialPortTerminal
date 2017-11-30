@@ -65,16 +65,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Implementation\ICommandVariable.cs" />
+    <Compile Include="Commands\Implementation\IDeviceCommand.cs" />
+    <Compile Include="Commands\View\UsrCommandAction.xaml.cs">
+      <DependentUpon>UsrCommandAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\View\UsrVariableContainer.xaml.cs">
+      <DependentUpon>UsrVariableContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ApplicationSettings.cs" />
+    <Compile Include="Commands\Implementation\DeviceCommand.cs" />
+    <Compile Include="Commands\Implementation\DeviceCommandVariable.cs" />
+    <Compile Include="Commands\Implementation\DeviceConfiguration.cs" />
     <Compile Include="Configuration\SettingsManager.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Internationalization\MyLanguages.cs" />
     <Compile Include="UserControls\MyConsole.xaml.cs">
       <DependentUpon>MyConsole.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UsrTabCommands.xaml.cs">
+      <DependentUpon>UsrTabCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinContainer.xaml.cs">
+      <DependentUpon>WinContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFComandosAT.xaml.cs">
       <DependentUpon>WPFComandosAT.xaml</DependentUpon>
     </Compile>
+    <Page Include="Commands\View\UsrCommandAction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\View\UsrVariableContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Internationalization\Resources\en-US.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +133,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UsrTabCommands.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPFComandosAT.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,6 +164,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Devices\Bluetooth-HT0%285%29%286%29-hc01.comV2.1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,6 +187,7 @@
       <Name>ALDSerialPort</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

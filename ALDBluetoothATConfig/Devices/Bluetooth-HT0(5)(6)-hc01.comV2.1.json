@@ -1,0 +1,124 @@
+{
+    "Name": "HC-06 hc01.comV2.1 firmware.",
+    "Description": "Configuration for hc06 hc01.comV2.1 firmware.",
+    "Devices": {
+        "HC-06": [
+            "hc01.comV2.1"
+        ],
+        "HC-05": [
+            "hc01.comV2.1"
+        ]
+    },
+    "SequenceAfterEveryCommand": "\r\n",
+    "Commands": [
+        {
+            "Command": "AT",
+            "Description": "Test command.",
+            "ShortLabel": "Test"
+        },
+        {
+            "Command": "AT+ORGL",
+            "Description": "Restore default configuration.",
+            "ShortLabel": "Restore"
+        },
+        {
+            "Command": "AT+VERSION",
+            "Description": "Get firmware version.",
+            "ShortLabel": "Get Version"
+        },
+        {
+            "Command": "AT+STATE",
+            "Description": "Get module state.",
+            "ShortLabel": "Get State"
+        },
+        {
+            "Command": "AT+ROLE",
+            "Description": "Get module role.",
+            "ShortLabel": "Get Role"
+        },
+        {
+            "Command": "AT+ROLE:{{ROLE}}",
+            "Description": "Change module role.",
+            "ShortLabel": "Set Role",
+            "Variables": [
+                {
+                    "Variable": "ROLE",
+                    "Regex": "^[0-9]{4}$"
+                }
+            ]
+        },
+        {
+            "Command": "AT+ADDR",
+            "Description": "Get bluetooth address.",
+            "ShortLabel": "Get Address"
+        },
+        {
+            "Command": "AT+UART",
+            "Description": "Get module baudrate configuration.",
+            "ShortLabel": "Get Baudrate"
+        },
+        {
+            "Command": "AT+UART:{{BAUDRATE}},{{STOPBITS}},{{PARITY}}",
+            "Description": "Set module baudrate configuration.",
+            "ShortLabel": "Set Baudrate",
+            "Variables": [
+                {
+                    "Variable": "BAUDRATE",
+                    "Map": {
+                        "1200": "1200",
+                        "2400": "2400",
+                        "4800": "4800",
+                        "9600": "9600",
+                        "19200": "19200",
+                        "38400": "38400",
+                        "57600": "57600",
+                        "115200": "115200",
+                        "230400": "230400"
+                    }
+                },
+                {
+                    "Variable": "STOPBITS",
+                    "Map": {
+                        "0": "1 bit",
+                        "1": "2 bits"
+                    }
+                },
+                {
+                    "Variable": "PARITY",
+                    "Map": {
+                        "0": "None",
+                        "1": "Odd",
+                        "2": "Even"
+                    }
+                }
+            ]
+        },
+        {
+            "Command": "AT+NAME:{{NAME}}",
+            "Description": "Change device name.",
+            "ShortLabel": "Set Name",
+            "Variables": [
+                {
+                    "Variable": "NAME",
+                    "Regex": "^[A-Za-z0-9]{3,20}$"
+                }
+            ]
+        },
+        {
+            "Command": "AT+PSWD",
+            "Description": "Get device PIN.",
+            "ShortLabel": "Get PIN"
+        },
+        {
+            "Command": "AT+PSWD:{{PIN}}",
+            "Description": "Change device PIN.",
+            "ShortLabel": "Set PIN",
+            "Variables": [
+                {
+                    "Variable": "PIN",
+                    "Regex": "^[0-9]{4}$"
+                }
+            ]
+        }
+    ]
+}

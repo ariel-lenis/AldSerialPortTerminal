@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ALDBluetoothATConfig.Internationalization.Resources"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="MainWindowTitle">HC-06 Bluetooth module configurator</system:String>
+    <system:String x:Key="MainWindowTitle">Serial Port Terminal</system:String>
     <system:String x:Key="SearchLabel">Search</system:String>
     <system:String x:Key="StartConfigurationLabel">Start Configuration</system:String>
     <system:String x:Key="BaudRateLabel">Baud Rate</system:String>
@@ -20,4 +19,6 @@
     <system:String x:Key="ParityOddLabel">Odd</system:String>
     <system:String x:Key="ParityEvenLabel">Even</system:String>
     <system:String x:Key="ClearConsoleLabel">Clear Console</system:String>
+    <system:String x:Key="CopySelectionLabel">Copy Selection</system:String>
+    
 </ResourceDictionary>

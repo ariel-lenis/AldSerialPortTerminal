@@ -7,9 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <RichTextBox x:Name="richTxtConsole" Margin="0,0,-1.013,0" Background="#FF464646" Foreground="#FF80B9FF" IsReadOnlyCaretVisible="True" Block.LineHeight="1" SelectionChanged="richTxtConsole_SelectionChanged" KeyDown="richTxtConsole_KeyDown" PreviewKeyDown="richTxtConsole_PreviewKeyDown" VerticalScrollBarVisibility="Visible">
+        <RichTextBox x:Name="richTxtConsole" Margin="0,0,-1.013,0" Background="#FF464646" Foreground="#FF80B9FF" IsReadOnlyCaretVisible="True" Block.LineHeight="1" SelectionChanged="richTxtConsole_SelectionChanged" KeyDown="richTxtConsole_KeyDown" PreviewKeyDown="richTxtConsole_PreviewKeyDown" VerticalScrollBarVisibility="Visible" IsUndoEnabled="False">
             <RichTextBox.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="{DynamicResource CopySelectionLabel}" Click="MenuItemCopySelection_Click"/>
                     <MenuItem Header="{DynamicResource ClearConsoleLabel}" Click="MenuItemClearConsole_Click" />
                 </ContextMenu>
             </RichTextBox.ContextMenu>

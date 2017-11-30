@@ -126,10 +126,12 @@ namespace ALDBluetoothATConfig
             try
             {
                 serial.OpenPort();
-                WPFComandosAT w = new WPFComandosAT(serial);
+                //WPFComandosAT w = new WPFComandosAT(serial);
+
+                WinContainer winContainer = new WinContainer(serial);
 
                 this.Hide();
-                w.ShowDialog();
+                winContainer.ShowDialog();
                 this.Show();
             }
             catch

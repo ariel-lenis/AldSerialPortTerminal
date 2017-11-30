@@ -23,13 +23,21 @@ namespace ALDBluetoothATConfig.UserControls
         private SolidColorBrush headerBrush = new SolidColorBrush(Color.FromRgb(100, 255, 200));
         private SolidColorBrush contentBrush = new SolidColorBrush(Color.FromRgb(0x80, 0xB9, 0xFF));
 
+        public delegate void DCommandDispatch(object who, string command);
+
+        public event DCommandDispatch OnCommandDispatch;
 
         TextPointer lastCaretPosition;
+        int editionZoneStartIndex;
+
+        private List<string> lastCommands = new List<string>();
+        private int lastCommandIndex = 0;
+
         public MyConsole()
         {
             InitializeComponent();
             this.UpdateLastCaretPosition();
-            this.AddHeader();
+            this.AddHeader();            
         }
 
         private void ChangeSelectionColor(SolidColorBrush targetBrush)
@@ -59,18 +67,23 @@ namespace ALDBluetoothATConfig.UserControls
             this.richTxtConsole.CaretPosition = this.richTxtConsole.Document.ContentEnd;
 
             this.UpdateLastCaretPosition();
+            this.editionZoneStartIndex = this.GetCaretPositionAsPlainText();
+
             this.ChangeSelectionColor(this.contentBrush);
+
+            
         }
 
         private void MoveToEnd()
         {
             this.richTxtConsole.Selection.Select(this.richTxtConsole.Document.ContentEnd, this.richTxtConsole.Document.ContentEnd);
             this.richTxtConsole.CaretPosition = this.richTxtConsole.Document.ContentEnd;
+            this.richTxtConsole.ScrollToEnd();
         }
 
         private void UpdateLastCaretPosition()
         {
-            this.lastCaretPosition = this.richTxtConsole.CaretPosition.DocumentEnd;
+            this.lastCaretPosition = this.richTxtConsole.CaretPosition.DocumentEnd.GetPositionAtOffset(0);
         }
 
         public void SetText(string content)
@@ -89,12 +102,14 @@ namespace ALDBluetoothATConfig.UserControls
 
         private void richTxtConsole_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            /*
             if (this.richTxtConsole.CaretPosition.Paragraph == null)
                 return;
 
             int offset = this.GetOffset();
 
             this.richTxtConsole.IsReadOnly = offset < -2;
+            */
         }
 
         private int GetOffset()
@@ -118,7 +133,6 @@ namespace ALDBluetoothATConfig.UserControls
             this.AddHeader();
             this.UpdateLastCaretPosition();
             this.MoveToEnd();
-
         }
 
         private void richTxtConsole_KeyDown(object sender, KeyEventArgs e)
@@ -127,14 +141,104 @@ namespace ALDBluetoothATConfig.UserControls
         }
 
         private void richTxtConsole_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (this.richTxtConsole.CaretPosition.Paragraph == null)
                 return;
 
-            int offset = this.GetOffset();
+            List<Key> specialKeys = new List<Key>() { Key.PageUp, Key.PageDown, Key.End };
 
-            if (e.Key == Key.Back)
-                e.Handled = offset <= -2;
+            if (specialKeys.Contains(e.Key))
+            {
+                return;
+            }
+
+            if (e.Key == Key.Up || e.Key == Key.Down)
+            {
+
+                e.Handled = true;
+                return;
+            }
+
+            bool editableZone = IsOnEditableZone(e.Key == Key.Back || e.Key == Key.Left);
+
+            if (editableZone)
+            {
+                this.ChangeSelectionColor(this.contentBrush);
+
+                if (e.Key == Key.Enter)
+                {
+                    this.DispatchCommand();
+                    e.Handled = true;
+                    return;
+                }
+            }            
+
+            e.Handled = !editableZone;
+        }
+
+        private void DispatchCommand()
+        {
+            TextPointer start = this.richTxtConsole.Document.ContentStart;
+            TextPointer end = this.richTxtConsole.Document.ContentEnd;
+
+            TextRange allRange = new TextRange(start, end);
+
+            string command = allRange.Text.Substring(editionZoneStartIndex);
+
+            
+            if (command.EndsWith("\r\n"))
+            {
+                command = command.Substring(0, command.Length - 2);
+            }
+            
+
+            this.lastCommands.Add(command);
+            this.OnCommandDispatch?.Invoke(this, command);
+
+            //this.AddHeader();
+        }
+
+        int GetCaretPositionAsPlainText()
+        {
+            TextPointer start = this.richTxtConsole.Document.ContentStart;
+            TextPointer caret = this.richTxtConsole.CaretPosition;
+            TextRange range = new TextRange(start, caret);
+
+            int indexInText = range.Text.Length;
+
+            return indexInText;
+        }
+
+        private bool IsOnEditableZone(bool isBackSpace)
+        {
+            int currentPosition = this.GetCaretPositionAsPlainText();
+
+            if (isBackSpace)
+            {
+                // Prevent first character deletion
+                return currentPosition > this.editionZoneStartIndex;
+            }
+
+            return currentPosition >= this.editionZoneStartIndex;
+        }
+
+        private void MenuItemCopySelection_Click(object sender, RoutedEventArgs e)
+        {
+            this.richTxtConsole.Copy();
+        }
+
+        public void SendCommand(string command)
+        {
+            this.richTxtConsole.CaretPosition = this.richTxtConsole.Document.ContentEnd;
+
+            this.UpdateLastCaretPosition();
+            this.editionZoneStartIndex = this.GetCaretPositionAsPlainText();
+
+            this.ChangeSelectionColor(this.contentBrush);
+
+            this.richTxtConsole.Selection.Text = command;
+
+            this.DispatchCommand();
         }
     }
 }
