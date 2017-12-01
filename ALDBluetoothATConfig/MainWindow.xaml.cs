@@ -1,19 +1,11 @@
-﻿using ALDBluetoothATConfig.Internationalization;
+﻿using Ald.SerialTerminal.Main.Internationalization;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using A = ALDSerialPort;
-namespace ALDBluetoothATConfig
+using Ald.SerialPort.Configuration;
+
+namespace Ald.SerialTerminal.Main
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -34,7 +26,7 @@ namespace ALDBluetoothATConfig
         {
             string lastUsedPort = this.settingsManager.CurrentSettings.LastUsedPort;
 
-            var res = ALDSerialPort.ALDSerialPort.EnumeratePorts();
+            var res = ALDSerialPort.EnumeratePorts();
             var ports = res.ToDictionary(x => x.Port);
 
             cbCOMPorts.ItemsSource = null;
@@ -69,12 +61,12 @@ namespace ALDBluetoothATConfig
             cbBitsPerSecond.SelectedItem = ALDSerialPort.ALDSerialPort.SerialConfiguration.EBitsPerSecond.V9600;
             */
 
-            this.cbBitsPerSecond.ItemsSource = ALDSerialPort.SerialConfiguration.BitsPerSecondArray;
+            this.cbBitsPerSecond.ItemsSource = SerialConfiguration.BitsPerSecondArray;
             cbBitsPerSecond.SelectedValue = 115200;
             
-            type = typeof(A.SerialConfiguration.EDataBits);
+            type = typeof(SerialConfiguration.EDataBits);
             cbDataBits.ItemsSource = type.GetEnumValues();
-            cbDataBits.SelectedItem = ALDSerialPort.SerialConfiguration.EDataBits.V8;
+            cbDataBits.SelectedItem = SerialConfiguration.EDataBits.V8;
             
 
             type = typeof(System.IO.Ports.StopBits);
@@ -98,11 +90,11 @@ namespace ALDBluetoothATConfig
         {
             string profile = this.cbProfile.Text.Trim();
 
-            A.SerialPreviousInformation portInformation = cbCOMPorts.SelectedItem as A.SerialPreviousInformation;
-            A.SerialConfiguration serialConfiguration = new A.SerialConfiguration();
+            SerialPreviousInformation portInformation = cbCOMPorts.SelectedItem as SerialPreviousInformation;
+            SerialConfiguration serialConfiguration = new SerialConfiguration();
 
             serialConfiguration.ConfigBitsPerSecond = (int)cbBitsPerSecond.SelectedValue;
-            serialConfiguration.ConfigDataBits = (A.SerialConfiguration.EDataBits)this.cbDataBits.SelectedItem;
+            serialConfiguration.ConfigDataBits = (SerialConfiguration.EDataBits)this.cbDataBits.SelectedItem;
             serialConfiguration.ConfigParity = (System.IO.Ports.Parity)this.cbParity.SelectedItem;
             serialConfiguration.ConfigStopBits = (System.IO.Ports.StopBits)this.cbStopBits.SelectedItem;
             
@@ -119,9 +111,9 @@ namespace ALDBluetoothATConfig
             this.settingsManager.CurrentSettings.DefaultPortSetting = profile;
             this.settingsManager.SaveToFile();
 
-            A.TotalConfiguration configuration = new A.TotalConfiguration(portInformation.Port, serialConfiguration);
+            TotalConfiguration configuration = new TotalConfiguration(portInformation.Port, serialConfiguration);
 
-            A.ALDSerialPort serial = new A.ALDSerialPort(configuration);
+            ALDSerialPort serial = new ALDSerialPort(configuration);
 
             try
             {

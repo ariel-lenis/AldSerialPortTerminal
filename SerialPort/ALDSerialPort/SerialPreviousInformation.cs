@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ALDSerialPort
+namespace Ald.SerialPort.Configuration
 {
     public class SerialPreviousInformation
     {

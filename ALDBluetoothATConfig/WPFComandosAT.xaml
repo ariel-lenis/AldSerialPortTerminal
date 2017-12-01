@@ -1,11 +1,11 @@
 ﻿<Window
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:UserControls="clr-namespace:ALDBluetoothATConfig.UserControls" mc:Ignorable="d"
-	x:Class="ALDBluetoothATConfig.WPFComandosAT"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:UserControls="clr-namespace:Ald.SerialTerminal.Main.UserControls" mc:Ignorable="d"
+	x:Class="Ald.SerialTerminal.Main.WPFComandosAT"
 	x:Name="Window"
 	Title="{DynamicResource ConsoleWindowTitle}"
-	Width="601" Height="303" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Icon="/ALDBluetoothATConfig;component/ald.ico" WindowState="Maximized">
+	Width="601" Height="303" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Icon="/Ald.SerialTerminal.Main;component/ald.ico" WindowState="Maximized">
 
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>

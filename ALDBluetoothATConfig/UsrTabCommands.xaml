@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ALDBluetoothATConfig"
-             xmlns:UserControls="clr-namespace:ALDBluetoothATConfig.UserControls" x:Class="ALDBluetoothATConfig.UsrTabCommands"
+             xmlns:local="clr-namespace:Ald.SerialTerminal.Main"
+             xmlns:UserControls="clr-namespace:Ald.SerialTerminal.Main.UserControls" x:Class="Ald.SerialTerminal.Main.UsrTabCommands"
              mc:Ignorable="d" Width="619" Height="278" >
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>

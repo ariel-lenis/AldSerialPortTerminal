@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALDBluetoothATConfig", "ALDBluetoothATConfig\ALDBluetoothATConfig.csproj", "{BEDCBA19-FD7A-453F-AAC6-6FC3B3ED6995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ald.SerialTerminal.Main", "ALDBluetoothATConfig\Ald.SerialTerminal.Main.csproj", "{BEDCBA19-FD7A-453F-AAC6-6FC3B3ED6995}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALDSerialPort", "SerialPort\ALDSerialPort\ALDSerialPort.csproj", "{5D744B44-3948-4CF8-93C4-A312A2EB61DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ald.SerialPort.Configuration", "SerialPort\ALDSerialPort\Ald.SerialPort.Configuration.csproj", "{5D744B44-3948-4CF8-93C4-A312A2EB61DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ald.Internationalization", "Ald.Internationalization\Ald.Internationalization.csproj", "{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ald.SerialTerminal.Device.Configuration", "Ald.SerialTerminal.Device.Configuration\Ald.SerialTerminal.Device.Configuration.csproj", "{D583E3CD-F344-4959-BEDE-1E595DE4B030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,8 +55,23 @@ Global
 		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|x86.ActiveCfg = Release|Any CPU
 		{D90DB06D-EAAA-429D-96C7-1CDDC02E7D19}.Release|x86.Build.0 = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Debug|x86.Build.0 = Debug|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|x86.ActiveCfg = Release|Any CPU
+		{D583E3CD-F344-4959-BEDE-1E595DE4B030}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {437E1C83-236E-4E81-8AC3-E2912D680702}
 	EndGlobalSection
 EndGlobal

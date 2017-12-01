@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO.Ports;
+using Ports = System.IO.Ports;
 using System.Management;
-using System.Windows;
 
-namespace ALDSerialPort
+namespace Ald.SerialPort.Configuration
 {
     public class ALDSerialPort
     {
-        SerialPort serial;
+        Ports.SerialPort serial;
 
-        public SerialPort Serial
+        public Ports.SerialPort Serial
         {
             get { return serial; }
         }
 
-        public event SerialErrorReceivedEventHandler ErrorReceived;
-        public event SerialDataReceivedEventHandler DataReceived;
+        public event Ports.SerialErrorReceivedEventHandler ErrorReceived;
+        public event Ports.SerialDataReceivedEventHandler DataReceived;
 
         public bool Kbhit()
         {
@@ -36,14 +35,13 @@ namespace ALDSerialPort
         {
             string targetCaptionProperty = "Caption";
 
-            SerialConfiguration c;
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity");
             List<string> Descriptions = new List<string>();
             foreach (ManagementObject queryObj in searcher.Get())
                 if (queryObj.ContainsProperty(targetCaptionProperty) && queryObj[targetCaptionProperty] != null && queryObj[targetCaptionProperty].ToString().Contains("(COM"))
                     Descriptions.Add(queryObj[targetCaptionProperty].ToString());
 
-            List<SerialPreviousInformation> list = SerialPort.GetPortNames().ToList().ConvertAll(x => new SerialPreviousInformation() { Port = x });
+            List<SerialPreviousInformation> list = Ports.SerialPort.GetPortNames().ToList().ConvertAll(x => new SerialPreviousInformation() { Port = x });
             string information;
             int previdx;
             foreach (var i in list)
@@ -66,17 +64,17 @@ namespace ALDSerialPort
         }
         public ALDSerialPort(TotalConfiguration config)
         {
-            serial = new SerialPort(config.COM, (int)config.Configuration.ConfigBitsPerSecond, config.Configuration.ConfigParity, (int)config.Configuration.ConfigDataBits, config.Configuration.ConfigStopBits);
-            serial.ErrorReceived += new SerialErrorReceivedEventHandler(serial_ErrorReceived);
-            serial.DataReceived += new SerialDataReceivedEventHandler(serial_DataReceived);
+            serial = new Ports.SerialPort(config.COM, (int)config.Configuration.ConfigBitsPerSecond, config.Configuration.ConfigParity, (int)config.Configuration.ConfigDataBits, config.Configuration.ConfigStopBits);
+            serial.ErrorReceived += new Ports.SerialErrorReceivedEventHandler(serial_ErrorReceived);
+            serial.DataReceived += new Ports.SerialDataReceivedEventHandler(serial_DataReceived);
             serial.Encoding = Encoding.GetEncoding("Windows-1252");
         }
-        void serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        void serial_DataReceived(object sender, Ports.SerialDataReceivedEventArgs e)
         {
             if (DataReceived != null)
                 DataReceived(this, e);
         }
-        void serial_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        void serial_ErrorReceived(object sender, Ports.SerialErrorReceivedEventArgs e)
         {
             if (ErrorReceived != null)
                 ErrorReceived(this, e);
@@ -89,8 +87,8 @@ namespace ALDSerialPort
         public void ClosePort()
         {
 
-            serial.ErrorReceived -= new SerialErrorReceivedEventHandler(serial_ErrorReceived);
-            serial.DataReceived -= new SerialDataReceivedEventHandler(serial_DataReceived);
+            serial.ErrorReceived -= new Ports.SerialErrorReceivedEventHandler(serial_ErrorReceived);
+            serial.DataReceived -= new Ports.SerialDataReceivedEventHandler(serial_DataReceived);
 
             serial.DiscardInBuffer();
             serial.DiscardOutBuffer();

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ALDBluetoothATConfig.Configuration
+namespace Ald.SerialTerminal.Main.Configuration
 {
     public class SettingsManager
     {

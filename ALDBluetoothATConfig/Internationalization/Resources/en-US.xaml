@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="MainWindowTitle">Serial Port Terminal</system:String>
+    <system:String x:Key="MainWindowTitle">A.L.D. Serial Port Terminal</system:String>
     <system:String x:Key="SearchLabel">Search</system:String>
     <system:String x:Key="StartConfigurationLabel">Start Configuration</system:String>
     <system:String x:Key="BaudRateLabel">Baud Rate</system:String>

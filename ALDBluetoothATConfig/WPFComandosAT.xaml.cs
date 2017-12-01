@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Timers;
+using Ald.SerialPort.Configuration;
 
-namespace ALDBluetoothATConfig
+namespace Ald.SerialTerminal.Main
 {
 	/// <summary>
 	/// Interaction logic for WPFTestearComunicacion.xaml
@@ -37,7 +30,7 @@ namespace ALDBluetoothATConfig
             v230400bps
         }
 
-        private ALDSerialPort.ALDSerialPort serial;
+        private ALDSerialPort serial;
 
 		public WPFComandosAT()
 		{
@@ -51,9 +44,7 @@ namespace ALDBluetoothATConfig
             strNew = strOld = "";
             timer = new Timer(500);
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
-
-            //this.richTxtResults.ContextMenu = 
-		}
+        }
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -63,7 +54,7 @@ namespace ALDBluetoothATConfig
             timer.Stop();
         }
 
-        public WPFComandosAT(ALDSerialPort.ALDSerialPort serial):this()
+        public WPFComandosAT(ALDSerialPort serial):this()
         {            
             this.serial = serial;
             serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);

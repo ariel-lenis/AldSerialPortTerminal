@@ -8,8 +8,8 @@
     <ProjectGuid>{BEDCBA19-FD7A-453F-AAC6-6FC3B3ED6995}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ALDBluetoothATConfig</RootNamespace>
-    <AssemblyName>ALDBluetoothATConfig</AssemblyName>
+    <RootNamespace>Ald.SerialTerminal.Main</RootNamespace>
+    <AssemblyName>Ald.SerialTerminal.Main</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ald.ico</ApplicationIcon>
@@ -65,8 +67,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\Implementation\ICommandVariable.cs" />
-    <Compile Include="Commands\Implementation\IDeviceCommand.cs" />
     <Compile Include="Commands\View\UsrCommandAction.xaml.cs">
       <DependentUpon>UsrCommandAction.xaml</DependentUpon>
     </Compile>
@@ -74,9 +74,6 @@
       <DependentUpon>UsrVariableContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configuration\ApplicationSettings.cs" />
-    <Compile Include="Commands\Implementation\DeviceCommand.cs" />
-    <Compile Include="Commands\Implementation\DeviceCommandVariable.cs" />
-    <Compile Include="Commands\Implementation\DeviceConfiguration.cs" />
     <Compile Include="Configuration\SettingsManager.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Internationalization\MyLanguages.cs" />
@@ -164,9 +161,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Devices\Bluetooth-HT0%285%29%286%29-hc01.comV2.1.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,9 +176,13 @@
       <Project>{d90db06d-eaaa-429d-96c7-1cddc02e7d19}</Project>
       <Name>Ald.Internationalization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SerialPort\ALDSerialPort\ALDSerialPort.csproj">
+    <ProjectReference Include="..\Ald.SerialTerminal.Device.Configuration\Ald.SerialTerminal.Device.Configuration.csproj">
+      <Project>{d583e3cd-f344-4959-bede-1e595de4b030}</Project>
+      <Name>Ald.SerialTerminal.Device.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerialPort\ALDSerialPort\Ald.SerialPort.Configuration.csproj">
       <Project>{5d744b44-3948-4cf8-93c4-a312a2eb61de}</Project>
-      <Name>ALDSerialPort</Name>
+      <Name>Ald.SerialPort.Configuration</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace ALDBluetoothATConfig
+namespace Ald.SerialTerminal.Main
 {
     /// <summary>
     /// Interaction logic for App.xaml

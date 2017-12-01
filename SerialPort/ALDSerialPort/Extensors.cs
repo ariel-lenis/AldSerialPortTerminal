@@ -1,6 +1,6 @@
 ﻿using System.Management;
 
-namespace ALDSerialPort
+namespace Ald.SerialPort.Configuration
 {
     public static class Extensors
     {

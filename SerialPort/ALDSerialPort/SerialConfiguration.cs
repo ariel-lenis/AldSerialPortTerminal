@@ -4,7 +4,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 
-namespace ALDSerialPort
+namespace Ald.SerialPort.Configuration
 {
     [Serializable]
     public class SerialConfiguration

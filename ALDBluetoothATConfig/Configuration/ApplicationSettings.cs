@@ -1,10 +1,7 @@
-﻿using ALDSerialPort;
-using System;
+﻿using Ald.SerialPort.Configuration;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace ALDBluetoothATConfig.Configuration
+namespace Ald.SerialTerminal.Main.Configuration
 {
     public class ApplicationSettings
     {

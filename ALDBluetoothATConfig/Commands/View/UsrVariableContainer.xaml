@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="ALDBluetoothATConfig.Commands.View.UsrVariableContainer"
+﻿<UserControl x:Class="Ald.SerialTerminal.Main.Commands.View.UsrVariableContainer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ALDBluetoothATConfig.Commands.View"
+             xmlns:local="clr-namespace:Ald.SerialTerminal.Main.Commands.View"
              mc:Ignorable="d" Height="26.937" Width="296.262">
     <Grid>
         <Grid.ColumnDefinitions>

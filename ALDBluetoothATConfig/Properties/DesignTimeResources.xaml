@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ALDBluetoothATConfig.Properties">
+                    xmlns:local="clr-namespace:Ald.SerialTerminal.Main.Properties">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/ALDBluetoothATConfig;component/Internationalization/Resources/en-US.xaml"/>
+        <ResourceDictionary Source="/Ald.SerialTerminal.Main;component/Internationalization/Resources/en-US.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

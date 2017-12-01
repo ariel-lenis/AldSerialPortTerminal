@@ -1,5 +1,6 @@
-﻿using ALDBluetoothATConfig.Commands.Implementation;
-using ALDBluetoothATConfig.Commands.View;
+﻿using Ald.SerialPort.Configuration;
+using Ald.SerialTerminal.Device.Configuration;
+using Ald.SerialTerminal.Main.Commands.View;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace ALDBluetoothATConfig
+namespace Ald.SerialTerminal.Main
 {
     /// <summary>
     /// Interaction logic for UsrTabCommands.xaml
@@ -65,7 +66,7 @@ namespace ALDBluetoothATConfig
             this.SendData(command);
         }
 
-        private ALDSerialPort.ALDSerialPort serial;
+        private ALDSerialPort serial;
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -75,7 +76,7 @@ namespace ALDBluetoothATConfig
             timer.Stop();
         }
 
-        public void InitializeControl(ALDSerialPort.ALDSerialPort serial)
+        public void InitializeControl(ALDSerialPort serial)
         {
             this.serial = serial;
             serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);

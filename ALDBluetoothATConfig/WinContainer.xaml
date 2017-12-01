@@ -1,9 +1,9 @@
-﻿<Window x:Class="ALDBluetoothATConfig.WinContainer"
+﻿<Window x:Class="Ald.SerialTerminal.Main.WinContainer"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ALDBluetoothATConfig"
+        xmlns:local="clr-namespace:Ald.SerialTerminal.Main"
         mc:Ignorable="d"
         Title="WinContainer" Height="468.543" Width="1036.318" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>

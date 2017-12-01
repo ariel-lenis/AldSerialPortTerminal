@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Ald.Internationalization;
 
-namespace ALDBluetoothATConfig.Internationalization
+namespace Ald.SerialTerminal.Main.Internationalization
 {
     public class MyLanguages : ResourcesManager
     {

@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Ald.SerialPort.Configuration;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace ALDBluetoothATConfig
+namespace Ald.SerialTerminal.Main
 {
     /// <summary>
     /// Interaction logic for WinContainer.xaml
     /// </summary>
     public partial class WinContainer : Window
     {
-        ALDSerialPort.ALDSerialPort serial;
-        public WinContainer(ALDSerialPort.ALDSerialPort serial)
+        ALDSerialPort serial;
+        public WinContainer(ALDSerialPort serial)
         {
             InitializeComponent();
             this.serial = serial;

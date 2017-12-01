@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ALDBluetoothATConfig.Commands.Implementation
+﻿namespace Ald.SerialTerminal.Device.Configuration
 {
     public delegate void DOnCommandAction(object sender, string command);
 

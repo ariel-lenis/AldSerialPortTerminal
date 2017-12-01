@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace ALDBluetoothATConfig.Commands.Implementation
+namespace Ald.SerialTerminal.Device.Configuration
 {
     [Serializable]
     public class DeviceCommand

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ALDBluetoothATConfig.UserControls
+namespace Ald.SerialTerminal.Main.UserControls
 {
     /// <summary>
     /// Interaction logic for MyConsole.xaml
@@ -58,8 +58,6 @@ namespace ALDBluetoothATConfig.UserControls
             this.ChangeSelectionColor(this.headerBrush);
 
             //this.richTxtConsole.AppendText("\n" + Environment.UserName + ">");
-
-
 
             //this.richTxtConsole.Selection.Select(this.richTxtConsole.Document.ContentEnd, this.richTxtConsole.Document.ContentEnd);
             //this.richTxtConsole.CaretPosition = this.richTxtConsole.Document.ContentEnd;

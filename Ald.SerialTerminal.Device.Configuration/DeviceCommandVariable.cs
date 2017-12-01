@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using R = System.Text.RegularExpressions;
 
-namespace ALDBluetoothATConfig.Commands.Implementation
+namespace Ald.SerialTerminal.Device.Configuration
 {
     [Serializable]
     public class DeviceCommandVariable
