@@ -1,8 +1,10 @@
 ﻿using Ald.SerialPort.Configuration;
+using System;
 using System.Collections.Generic;
 
 namespace Ald.SerialTerminal.Main.Configuration
 {
+    [Serializable]
     public class ApplicationSettings
     {
         public string LastUsedPort { get; set; }

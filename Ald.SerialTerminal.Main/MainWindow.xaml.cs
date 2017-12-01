@@ -51,8 +51,7 @@ namespace Ald.SerialTerminal.Main
             Type type;
 
             this.cbLanguage.ItemsSource = MyLanguages.Current.AllLanguages;
-            this.cbLanguage.Text = "English";
-            
+            this.cbLanguage.Text = "English";           
 
             /*
             
@@ -80,7 +79,7 @@ namespace Ald.SerialTerminal.Main
 
             this.cbProfile.ItemsSource = this.settingsManager.CurrentSettings.Configurations.Keys.ToList();
 
-            if (this.settingsManager.CurrentSettings.Configurations.ContainsKey(this.settingsManager.CurrentSettings.DefaultPortSetting))
+            if (this.settingsManager.CurrentSettings.DefaultPortSetting != null && this.settingsManager.CurrentSettings.Configurations.ContainsKey(this.settingsManager.CurrentSettings.DefaultPortSetting))
                 this.cbProfile.SelectedItem = this.settingsManager.CurrentSettings.DefaultPortSetting;
 
             this.UpdatePorts();

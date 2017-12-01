@@ -27,6 +27,10 @@ namespace Ald.SerialTerminal.Main.Configuration
                 json = File.ReadAllText(this.fileName);
                 this.CurrentSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
             }
+            else
+            {
+                this.CurrentSettings = new ApplicationSettings();
+            }
         }
 
         public void SaveToFile()
