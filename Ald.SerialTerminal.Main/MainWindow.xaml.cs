@@ -118,7 +118,6 @@ namespace Ald.SerialTerminal.Main
             try
             {
                 serial.OpenPort();
-                //WPFComandosAT w = new WPFComandosAT(serial);
 
                 WinContainer winContainer = new WinContainer(serial);
 
@@ -128,7 +127,7 @@ namespace Ald.SerialTerminal.Main
             }
             catch
             {
-                MessageBox.Show("No se puede abrir este puerto.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Cannot open port.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

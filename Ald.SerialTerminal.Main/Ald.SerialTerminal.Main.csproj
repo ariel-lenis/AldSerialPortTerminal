@@ -67,30 +67,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\View\UsrCommandAction.xaml.cs">
+    <Compile Include="UserControls\UsrCommandAction.xaml.cs">
       <DependentUpon>UsrCommandAction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\View\UsrVariableContainer.xaml.cs">
+    <Compile Include="UserControls\UsrVariableContainer.xaml.cs">
       <DependentUpon>UsrVariableContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configuration\ApplicationSettings.cs" />
     <Compile Include="Configuration\SettingsManager.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Configuration\Constants.cs" />
     <Compile Include="Internationalization\MyLanguages.cs" />
     <Compile Include="UserControls\MyConsole.xaml.cs">
       <DependentUpon>MyConsole.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UsrTabCommands.xaml.cs">
+    <Compile Include="UserControls\UsrTabCommands.xaml.cs">
       <DependentUpon>UsrTabCommands.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinContainer.xaml.cs">
       <DependentUpon>WinContainer.xaml</DependentUpon>
     </Compile>
-    <Page Include="Commands\View\UsrCommandAction.xaml">
+    <Page Include="UserControls\UsrCommandAction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Commands\View\UsrVariableContainer.xaml">
+    <Page Include="UserControls\UsrVariableContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,7 +127,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsrTabCommands.xaml">
+    <Page Include="UserControls\UsrTabCommands.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +178,7 @@
       <Name>Ald.SerialTerminal.Device.Configuration</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
