@@ -169,16 +169,15 @@
       <Project>{d90db06d-eaaa-429d-96c7-1cddc02e7d19}</Project>
       <Name>Ald.Internationalization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ald.SerialPort.Configuration\Ald.SerialPort.Configuration.csproj">
+      <Project>{5d744b44-3948-4cf8-93c4-a312a2eb61de}</Project>
+      <Name>Ald.SerialPort.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ald.SerialTerminal.Device.Configuration\Ald.SerialTerminal.Device.Configuration.csproj">
       <Project>{d583e3cd-f344-4959-bede-1e595de4b030}</Project>
       <Name>Ald.SerialTerminal.Device.Configuration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SerialPort\ALDSerialPort\Ald.SerialPort.Configuration.csproj">
-      <Project>{5d744b44-3948-4cf8-93c4-a312a2eb61de}</Project>
-      <Name>Ald.SerialPort.Configuration</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
